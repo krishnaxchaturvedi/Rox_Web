@@ -1,1 +1,6 @@
-export const validateBody=rules=>(req,res,next)=>{const errors={};for(const[k,rule]of Object.entries(rules)){const m=rule(req.body[k]);if(m)errors[k]=m}if(Object.keys(errors).length)return res.status(400).json({message:'Validation failed',errors});next()};
+import { fail } from './response.js';
+export const validate = (validator) => (req,res,next) => {
+  const errors=validator(req.body);
+  if(Object.keys(errors).length) return fail(res,400,'Validation failed.',errors);
+  next();
+};

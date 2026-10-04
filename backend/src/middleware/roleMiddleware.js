@@ -1,1 +1,2 @@
-export const allowRoles=(...roles)=>(req,res,next)=>{if(!req.user)return res.status(401).json({message:'Authentication required'});if(!roles.includes(req.user.role))return res.status(403).json({message:'Access denied'});next()};
+import { fail } from '../utils/response.js';
+export const allowRoles = (...roles) => (req,res,next) => roles.includes(req.user?.role) ? next() : fail(res,403,'You do not have permission to access this resource.');

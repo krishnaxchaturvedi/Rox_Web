@@ -1,0 +1,11 @@
+import {Router} from 'express';
+import {signup,login,me,changePassword} from '../controllers/authController.js';
+import {validate,} from '../middleware/validationMiddleware.js';
+import {validateSignup,validateLogin} from '../validators/authValidator.js';
+import {authenticate} from '../middleware/authMiddleware.js';
+const router=Router();
+router.post('/signup',validate(validateSignup),signup);
+router.post('/login',validate(validateLogin),login);
+router.get('/me',authenticate,me);
+router.post('/change-password',authenticate,changePassword);
+export default router;

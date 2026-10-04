@@ -1,1 +1,11 @@
-import jwt from 'jsonwebtoken';import{env}from'../config/env.js';export default function authMiddleware(req,res,next){const h=req.headers.authorization;if(!h?.startsWith('Bearer '))return res.status(401).json({message:'Authentication required'});try{req.user=jwt.verify(h.slice(7),env.jwtSecret);next()}catch{return res.status(401).json({message:'Invalid or expired token'})}}
+import { verifyToken } from '../utils/jwt.js';
+import { fail } from '../utils/response.js';
+
+export function authenticate(req,res,next){
+  try{
+    const header=req.headers.authorization || '';
+    if(!header.startsWith('Bearer ')) return fail(res,401,'Authentication required.');
+    req.user=verifyToken(header.slice(7));
+    next();
+  }catch{ return fail(res,401,'Invalid or expired token.'); }
+}
