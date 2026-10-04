@@ -1,1 +1,2 @@
-import{Outlet}from'react-router-dom';import Navbar from'../components/common/Navbar';import AdminSidebar from'../components/admin/AdminSidebar';export default()=> <><Navbar/><div className='container' style={{display:'grid',gridTemplateColumns:'220px 1fr',gap:20}}><AdminSidebar/><main><Outlet/></main></div></>
+import{Outlet}from'react-router-dom';import Navbar from'../components/common/Navbar';import AdminSidebar from'../components/admin/AdminSidebar';
+export default()=> <><Navbar/><div className='container layout'><AdminSidebar/><main><Outlet/></main></div></>

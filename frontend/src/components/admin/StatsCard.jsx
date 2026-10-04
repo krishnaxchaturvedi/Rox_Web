@@ -1,1 +1,1 @@
-export default({label,value})=><div className='card'><div className='muted'>{label}</div><div className='stat'>{value}</div></div>
+export default function StatsCard({label,value}){return <div className='card stat-card'><div className='stat-icon'>#</div><div className='muted small'>{label}</div><div className='stat'>{value}</div></div>}

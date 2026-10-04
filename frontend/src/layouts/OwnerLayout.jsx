@@ -1,1 +1,2 @@
-import{Outlet}from'react-router-dom';import Navbar from'../components/common/Navbar';import Sidebar from'../components/common/Sidebar';export default()=> <><Navbar/><div className='container' style={{display:'grid',gridTemplateColumns:'220px 1fr',gap:20}}><Sidebar links={[{to:'/owner',label:'Dashboard'},{to:'/owner/password',label:'Change password'}]}/><main><Outlet/></main></div></>
+import{Outlet}from'react-router-dom';import Navbar from'../components/common/Navbar';import Sidebar from'../components/common/Sidebar';
+export default()=> <><Navbar/><div className='container layout'><Sidebar links={[{to:'/owner',label:'Dashboard'},{to:'/owner/password',label:'Change password'}]}/><main><Outlet/></main></div></>

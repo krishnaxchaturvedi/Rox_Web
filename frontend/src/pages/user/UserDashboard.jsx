@@ -1,1 +1,2 @@
-import{Link}from'react-router-dom';export default()=> <><h1>User Dashboard</h1><div className='card'><h2>Find stores and rate them</h2><p>View overall ratings and submit or update your own 1-5 rating.</p><Link className='btn' to='/stores'>Browse stores</Link></div></>
+import{Link}from'react-router-dom';
+export default()=> <><div className='page-header'><div><h1>Welcome back</h1><p className='page-subtitle'>Discover stores and share your experience.</p></div></div><div className='card'><h2>Rate a store</h2><p className='muted'>Browse the live store directory, see its overall rating, and submit or update your own rating from 1 to 5.</p><Link className='btn' to='/stores'>Browse stores</Link></div></>
