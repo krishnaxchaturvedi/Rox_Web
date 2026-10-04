@@ -13,14 +13,21 @@ export async function stats(req,res,next){try{
 
 export async function users(req,res,next){try{
  const q=String(req.query.search||'').trim(),role=String(req.query.role||'').toUpperCase(),sort=userSort[req.query.sort]||'name',dir=req.query.direction==='desc'?'DESC':'ASC';
- const rows=(await query(`SELECT id,name,email,address,role,created_at FROM users
- WHERE ($1='' OR name ILIKE '%'||$1||'%' OR email ILIKE '%'||$1||'%' OR address ILIKE '%'||$1||'%')
+ const rows=(await query(`SELECT u.id,u.name,u.email,u.address,u.role,u.created_at,
+ (SELECT ROUND(AVG(r.rating)::numeric,1)::float FROM stores st LEFT JOIN ratings r ON r.store_id=st.id WHERE st.owner_id=u.id) AS owner_rating,
+ (SELECT COUNT(r.id)::int FROM stores st LEFT JOIN ratings r ON r.store_id=st.id WHERE st.owner_id=u.id) AS owner_rating_count
+ FROM users u
+ WHERE ($1='' OR u.name ILIKE '%'||$1||'%' OR u.email ILIKE '%'||$1||'%' OR u.address ILIKE '%'||$1||'%')
  AND ($2='' OR role::text=$2) ORDER BY ${sort} ${dir}, id ASC`,[q,role])).rows;
  return ok(res,{users:rows});
 }catch(e){next(e);}}
 
 export async function userDetails(req,res,next){try{
- const row=(await query('SELECT id,name,email,address,role,created_at FROM users WHERE id=$1',[req.params.id])).rows[0];
+ const row=(await query(`SELECT u.id,u.name,u.email,u.address,u.role,u.created_at,
+ st.id AS owner_store_id,st.name AS owner_store_name,st.address AS owner_store_address,
+ COALESCE(ROUND(AVG(r.rating)::numeric,1),0)::float AS owner_rating,COUNT(r.id)::int AS owner_rating_count
+ FROM users u LEFT JOIN stores st ON st.owner_id=u.id LEFT JOIN ratings r ON r.store_id=st.id
+ WHERE u.id=$1 GROUP BY u.id,st.id`,[req.params.id])).rows[0];
  if(!row)return fail(res,404,'User not found.');
  return ok(res,{user:row});
 }catch(e){next(e);}}
