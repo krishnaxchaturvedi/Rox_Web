@@ -1,1 +1,11 @@
-import LoginForm from'../components/auth/LoginForm';export default()=> <div className='container' style={{maxWidth:520}}><LoginForm/></div>
+import LoginForm from '../components/auth/LoginForm';
+
+export default function Login() {
+  return (
+    <main className="auth-shell">
+      <div className="auth-panel">
+        <LoginForm />
+      </div>
+    </main>
+  );
+}
