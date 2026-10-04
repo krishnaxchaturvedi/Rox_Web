@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import {signup,login,me,changePassword} from '../controllers/authController.js';
+import {signup,login,me,changePassword,requestPasswordReset,verifyPasswordResetOtp,resetPassword} from '../controllers/authController.js';
 import {validate,} from '../middleware/validationMiddleware.js';
 import {validateSignup,validateLogin} from '../validators/authValidator.js';
 import {authenticate} from '../middleware/authMiddleware.js';
@@ -8,4 +8,7 @@ router.post('/signup',validate(validateSignup),signup);
 router.post('/login',validate(validateLogin),login);
 router.get('/me',authenticate,me);
 router.post('/change-password',authenticate,changePassword);
+router.post('/forgot-password/request-otp',requestPasswordReset);
+router.post('/forgot-password/verify-otp',verifyPasswordResetOtp);
+router.post('/forgot-password/reset',resetPassword);
 export default router;
