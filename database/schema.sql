@@ -36,3 +36,15 @@ CREATE TABLE IF NOT EXISTS ratings (
 CREATE INDEX IF NOT EXISTS idx_users_role ON users(role);
 CREATE INDEX IF NOT EXISTS idx_stores_name ON stores(name);
 CREATE INDEX IF NOT EXISTS idx_ratings_store ON ratings(store_id);
+
+CREATE TABLE IF NOT EXISTS password_reset_tokens (
+ id SERIAL PRIMARY KEY,
+ user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+ otp_hash CHAR(64) NOT NULL,
+ attempts INTEGER NOT NULL DEFAULT 0 CHECK (attempts >= 0),
+ expires_at TIMESTAMPTZ NOT NULL,
+ verified_at TIMESTAMPTZ,
+ reset_token_hash CHAR(64),
+ created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+CREATE INDEX IF NOT EXISTS idx_password_reset_user ON password_reset_tokens(user_id);
