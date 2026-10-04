@@ -1,12 +1,17 @@
 import {Router} from 'express';
 import {authenticate} from '../middleware/authMiddleware.js';
 import {allowRoles} from '../middleware/roleMiddleware.js';
-import {stats,users,userDetails,createUser,stores} from '../controllers/adminController.js';
+import {stats,users,userDetails,createUser,updateUser,deleteUser,stores,createStore,updateStore,deleteStore} from '../controllers/adminController.js';
 const router=Router();
 router.use(authenticate,allowRoles('ADMIN'));
 router.get('/stats',stats);
 router.get('/users',users);
 router.post('/users',createUser);
 router.get('/users/:id',userDetails);
+router.put('/users/:id',updateUser);
+router.delete('/users/:id',deleteUser);
 router.get('/stores',stores);
+router.post('/stores',createStore);
+router.put('/stores/:id',updateStore);
+router.delete('/stores/:id',deleteStore);
 export default router;
