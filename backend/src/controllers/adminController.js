@@ -15,7 +15,7 @@ export async function users(req,res,next){try{
  const q=String(req.query.search||'').trim(),role=String(req.query.role||'').toUpperCase(),sort=userSort[req.query.sort]||'name',dir=req.query.direction==='desc'?'DESC':'ASC';
  const rows=(await query(`SELECT id,name,email,address,role,created_at FROM users
  WHERE ($1='' OR name ILIKE '%'||$1||'%' OR email ILIKE '%'||$1||'%' OR address ILIKE '%'||$1||'%')
- AND ($2='' OR role=$2) ORDER BY ${sort} ${dir}, id ASC`,[q,role])).rows;
+ AND ($2='' OR role::text=$2) ORDER BY ${sort} ${dir}, id ASC`,[q,role])).rows;
  return ok(res,{users:rows});
 }catch(e){next(e);}}
 
