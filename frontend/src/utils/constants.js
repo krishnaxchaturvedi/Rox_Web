@@ -1,0 +1,1 @@
+export const ROLES={ADMIN:'admin',USER:'user',OWNER:'owner'};export const ROLE_LABELS={admin:'System Administrator',user:'Normal User',owner:'Store Owner'};export const RATINGS=[1,2,3,4,5];

@@ -1,0 +1,1 @@
+import api from './api';export const getUsers=p=>api.get('/users',{params:p});export const getUser=id=>api.get('/users/'+id);export const createUser=d=>api.post('/users',d);

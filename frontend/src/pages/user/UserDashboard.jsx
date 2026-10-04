@@ -1,0 +1,1 @@
+import{Link}from'react-router-dom';export default()=> <><h1>User Dashboard</h1><div className='card'><h2>Find stores and rate them</h2><p>View overall ratings and submit or update your own 1-5 rating.</p><Link className='btn' to='/stores'>Browse stores</Link></div></>

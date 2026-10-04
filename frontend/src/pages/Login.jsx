@@ -1,0 +1,1 @@
+import LoginForm from'../components/auth/LoginForm';export default()=> <div className='container' style={{maxWidth:520}}><LoginForm/></div>

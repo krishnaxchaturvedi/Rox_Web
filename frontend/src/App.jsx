@@ -1,1 +1,1 @@
-export default function App() { return null; }
+import{BrowserRouter}from'react-router-dom';import{AuthProvider}from'./context/AuthContext';import AppRoutes from'./routes/AppRoutes';export default()=> <BrowserRouter><AuthProvider><AppRoutes/></AuthProvider></BrowserRouter>

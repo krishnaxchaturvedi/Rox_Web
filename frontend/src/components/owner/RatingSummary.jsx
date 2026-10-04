@@ -1,0 +1,1 @@
+export default({distribution={}})=><div className='card'><h3>Rating distribution</h3>{[5,4,3,2,1].map(n=><div key={n}>{n} ★ — {distribution[n]||0}%</div>)}</div>

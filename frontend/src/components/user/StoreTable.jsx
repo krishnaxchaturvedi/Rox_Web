@@ -1,0 +1,1 @@
+import StoreCard from'./StoreCard';export default({stores,onRate})=><div className='grid grid2'>{stores.map(s=><StoreCard key={s.id} store={s} onRate={onRate}/>)}</div>

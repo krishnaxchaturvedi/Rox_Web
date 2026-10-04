@@ -1,0 +1,1 @@
+import api from './api';export const login=d=>api.post('/auth/login',d);export const signup=d=>api.post('/auth/signup',d);export const changePassword=d=>api.put('/auth/password',d);

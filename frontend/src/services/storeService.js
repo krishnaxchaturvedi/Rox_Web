@@ -1,0 +1,1 @@
+import api from './api';export const getStores=p=>api.get('/stores',{params:p});export const getStore=id=>api.get('/stores/'+id);

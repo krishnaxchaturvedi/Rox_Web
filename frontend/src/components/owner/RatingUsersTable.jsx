@@ -1,0 +1,1 @@
+export default({ratings=[]})=><table className='table'><thead><tr><th>User</th><th>Email</th><th>Rating</th><th>Date</th></tr></thead><tbody>{ratings.map(r=><tr key={r.id}><td>{r.userName}</td><td>{r.userEmail}</td><td>{r.rating}</td><td>{r.createdAt?new Date(r.createdAt).toLocaleDateString():'—'}</td></tr>)}</tbody></table>

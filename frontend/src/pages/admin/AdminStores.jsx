@@ -1,0 +1,1 @@
+import{useEffect,useState}from'react';import{getStores}from'../../services/storeService';import StoreTable from'../../components/admin/StoreTable';export default function AdminStores(){const[s,setS]=useState([]);useEffect(()=>{getStores().then(r=>setS(r.data.stores||r.data)).catch(()=>{})},[]);return <><h1>Manage Stores</h1><div className='card'><StoreTable stores={s}/></div></>}

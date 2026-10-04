@@ -1,0 +1,1 @@
+import api from './api';export const getMyRating=id=>api.get('/ratings/'+id+'/mine');export const saveRating=(storeId,rating)=>api.post('/ratings',{storeId,rating});

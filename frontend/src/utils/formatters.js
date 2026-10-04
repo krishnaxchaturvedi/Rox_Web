@@ -1,0 +1,1 @@
+export const formatDate=v=>v?new Date(v).toLocaleDateString():'—';export const formatRating=v=>Number(v||0).toFixed(1);export const initials=n=>(n||'?').split(' ').map(x=>x[0]).slice(0,2).join('').toUpperCase();

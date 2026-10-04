@@ -1,0 +1,1 @@
+export default({averageRating,totalRatings})=><div className='grid grid2'><div className='card'><span className='muted'>Average rating</span><div className='stat'>{Number(averageRating||0).toFixed(1)}</div></div><div className='card'><span className='muted'>Total ratings</span><div className='stat'>{totalRatings||0}</div></div></div>

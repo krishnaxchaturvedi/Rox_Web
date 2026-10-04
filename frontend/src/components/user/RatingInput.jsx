@@ -1,0 +1,1 @@
+import{RATINGS}from'../../utils/constants';export default({value=0,onChange})=><div>{RATINGS.map(n=><button type='button' key={n} onClick={()=>onChange(n)} style={{border:0,background:'transparent',fontSize:22,opacity:n<=value?1:.3,cursor:'pointer'}}>★</button>)}</div>

@@ -1,0 +1,1 @@
+import Sidebar from '../common/Sidebar';export default()=> <Sidebar links={[{to:'/admin',label:'Dashboard'},{to:'/admin/users',label:'Users'},{to:'/admin/stores',label:'Stores'}]}/>

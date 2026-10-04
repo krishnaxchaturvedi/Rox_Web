@@ -1,0 +1,1 @@
+export default function Input({label,error,...p}){return <div style={{marginBottom:14}}>{label&&<label className='label'>{label}</label>}<input className='input'{...p}/>{error&&<div className='error'>{error}</div>}</div>}

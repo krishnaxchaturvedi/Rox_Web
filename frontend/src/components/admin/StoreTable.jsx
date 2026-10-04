@@ -1,0 +1,1 @@
+export default({stores=[]})=><table className='table'><thead><tr><th>Name</th><th>Address</th><th>Rating</th><th>Owner</th></tr></thead><tbody>{stores.map(s=><tr key={s.id}><td>{s.name}</td><td>{s.address}</td><td>{Number(s.averageRating||0).toFixed(1)}</td><td>{s.ownerName||'—'}</td></tr>)}</tbody></table>

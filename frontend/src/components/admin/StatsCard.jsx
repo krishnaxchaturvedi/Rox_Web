@@ -1,0 +1,1 @@
+export default({label,value})=><div className='card'><div className='muted'>{label}</div><div className='stat'>{value}</div></div>

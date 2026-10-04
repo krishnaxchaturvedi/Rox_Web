@@ -1,0 +1,1 @@
+import Modal from'../common/Modal';import RatingInput from'./RatingInput';import Button from'../common/Button';export default({open,value,onChange,onSave,onClose})=><Modal open={open} title='Rate store' onClose={onClose}><RatingInput value={value} onChange={onChange}/><br/><Button onClick={onSave}>Save rating</Button></Modal>

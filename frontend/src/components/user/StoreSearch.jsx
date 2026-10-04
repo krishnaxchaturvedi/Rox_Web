@@ -1,0 +1,1 @@
+export default({value,onChange})=><input className='input' placeholder='Search by store name or address' value={value} onChange={e=>onChange(e.target.value)}/>
