@@ -7,9 +7,11 @@ import adminRoutes from './routes/adminRoutes.js';
 import ownerRoutes from './routes/ownerRoutes.js';
 import {env} from './config/env.js';
 import {notFound,errorHandler} from './middleware/errorMiddleware.js';
+
 const app=express();
+app.disable('x-powered-by');
 app.use(cors({origin:env.clientUrl,credentials:true}));
-app.use(express.json());
+app.use(express.json({limit:'1mb'}));
 app.get('/api/health',(req,res)=>res.json({success:true,message:'Rox_Web API is running'}));
 app.use('/api/auth',authRoutes);
 app.use('/api/stores',storeRoutes);
