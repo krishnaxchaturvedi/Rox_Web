@@ -1,0 +1,1 @@
+-- PostgreSQL schema will be implemented here.
